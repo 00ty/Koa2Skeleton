@@ -1,2 +1,2 @@
 # Koa2Skeleton
-Koa2 WebApi脚手架
+Koa2 WebApi TypeScript脚手架
