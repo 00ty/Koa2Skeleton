@@ -1,16 +1,5 @@
 const path = require('path');
 
-import { MD5,Check } from './utils/String'
-
-// console.log(Number.isInteger('a'));
-
-
-
-// console.log(MD5('123456'));
-
-// console.log(Check('7',['1','2','3','4']));
-
-// process.exit();
 // 载入配置
 const dotenv = require('dotenv');
 dotenv.config({
