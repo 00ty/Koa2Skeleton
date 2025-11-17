@@ -1,4 +1,5 @@
 import { Sequelize } from 'sequelize';
+import Logger from '../Logger';
 
 const sequelize = new Sequelize(
   process.env.DB_MYSQL_DBNAME ?? 'test',
@@ -13,13 +14,14 @@ const sequelize = new Sequelize(
 	}
 );
 
-sequelize.authenticate()
-  .then(() => {
-    global.logger.info('数据库连接成功');
-  })
-  .catch((err:Error) => {
-    global.logger.error('数据库连接失败 -> ' , err.message);
-    process.exit();
-  })
+export async function initDatabase(): Promise<void> {
+  try {
+    await sequelize.authenticate();
+    Logger.info('数据库连接成功');
+  } catch (err: any) {
+    Logger.error('数据库连接失败 ->', err?.message || err);
+    throw err;
+  }
+}
 
 export default sequelize;
